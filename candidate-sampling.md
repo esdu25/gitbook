@@ -94,7 +94,7 @@ During training, since we are using a sampled denominator, we use cross-entropy 
 
 Recall the logit $$F(x,y) =\log P(y|x) + K(x)$$
 
-Therefore:
+Therefore the new logit is:
 
 $$
 \begin{align*}
@@ -112,7 +112,18 @@ $$
 
 Note that if Q is uniform (i.e. it matches the Full Softmax distribution), then it gets merged into $$K$$ and therefore has no effect.
 
+## Related Material
 
+* [https://github.com/tensorflow/recommenders/issues/257](https://github.com/tensorflow/recommenders/issues/257)
+  * Very well explained
+* "Sampling-Bias-Corrected Neural Modeling for Large Corpus Item Recommendations" [https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/6417b9a68bd77033d65e431bdba855563066dc8c.pdf](https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/6417b9a68bd77033d65e431bdba855563066dc8c.pdf)&#x20;
+  * Uses Sampled Softmax + LogQ correction in the YouTube recs retrieval. Training data comes from real user activities, so Q is not static; new videos get uploaded, and popularity of videos change. **The authors propose an online algorithm to estimate Q(y) with streaming data**.
+* "Adaptive Importance Sampling to Accelerate Training of a Neural Probabilistic Language Model", 2007 [https://www.iro.umontreal.ca/\~lisa/pointeurs/importance\_samplingIEEEtnn.pdf](https://www.iro.umontreal.ca/\~lisa/pointeurs/importance\_samplingIEEEtnn.pdf)
+  * Bengio's work on estimating the partition function with a sampling distribution. However, he says the estimator is biased... didn't get a chance to look in depth.
+* Not read
+  * "Mixed Negative Sampling for Learning Two-tower Neural Networks in Recommendations" [https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/b9f4e78a8830fe5afcf2f0452862fb3c0d6584ea.pdf](https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/b9f4e78a8830fe5afcf2f0452862fb3c0d6584ea.pdf)
+  * "On Using Very Large Target Vocabulary for Neural Machine Translation", 2015 [https://arxiv.org/pdf/1412.2007.pdf](https://arxiv.org/pdf/1412.2007.pdf)&#x20;
+    * Another commonly cited paper
 
 
 
